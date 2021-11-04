@@ -29,6 +29,28 @@ If you're familiar with developing in Ethereum's [Solidity](https://docs.solidit
 For a quickstart guide and in depth tutorials, see the guided [documentation](https://project-serum.github.io/anchor/getting-started/introduction.html).
 To jump straight to examples, go [here](https://github.com/project-serum/anchor/tree/master/examples). For the latest Rust and TypeScript API documentation, see [docs.rs](https://docs.rs/anchor-lang) and the [typedoc](https://project-serum.github.io/anchor/ts/index.html).
 
+In depth installation steps for Linux can be found by following along with the [.travis.yml](https://github.com/project-serum/anchor/blob/master/.travis.yml) file. Assuming you have NVM and Rust already installed:
+
+```
+rustup update && rustup component add rustfmt clippy
+nvm install 17 && nvm use 17
+sudo apt-get install -y pkg-config build-essential libudev-dev
+
+npm install -g mocha
+npm install -g ts-mocha
+npm install -g typescript
+npm install -g ts-node
+npm install -g buffer
+cd ts && yarn && yarn build && npm link && cd ../
+npm install -g @project-serum/serum
+npm install -g @project-serum/common
+npm install -g @solana/spl-token
+sh -c "$(curl -sSfL https://release.solana.com/v1.8.0/install)"
+cargo build
+```
+You can follow along with the scripts therein to see the Rust build and test commands, as well as the e2e tests. The [test directory](https://github.com/project-serum/anchor/tree/master/tests) is full of useful examples of both Anchor programs and relevant JS bindings, and also show how to include non-anchor dependency programs for localnet testing. 
+
+
 ## Packages
 
 | Package | Description | Version | Docs |
